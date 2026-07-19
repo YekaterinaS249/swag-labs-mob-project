@@ -16,6 +16,7 @@ public class LoginPage  extends BasePage {
     private final By userLoginItems = AppiumBy.xpath("//android.widget.TextView[@text=\"PRODUCTS\"]");
     private final By emptyUserNameInput = AppiumBy.xpath("//android.widget.TextView[@text=\"Username is required\"]");
     private final By errorMessageLockedOutUserName = AppiumBy.xpath("//android.widget.TextView[@text=\"Sorry, this user has been locked out.\"]\n");
+    private final By loginPageTitle = AppiumBy.accessibilityId("test-Login");
 
 
     public LoginPage(AppiumDriver driver) {
@@ -73,5 +74,13 @@ public class LoginPage  extends BasePage {
         String text = driver.findElement(errorMessageLockedOutUserName).getText();
         log.info("User name is locked {}", text);
         return text;
+    }
+
+    @Step("Get login page title")
+   public boolean isLoginPageTitleDisplayed() {
+        boolean isDisplayed = driver.findElement(loginPageTitle).isDisplayed();
+        log.info("Login page title is displayed {}", isDisplayed);
+        return isDisplayed;
+
     }
 }
