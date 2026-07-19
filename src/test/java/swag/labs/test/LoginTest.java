@@ -53,4 +53,10 @@ public class LoginTest extends BaseTest {
         loginPage.login(LoginTestData.LOCKED_OUT_USERNAME, LoginTestData.PASSWORD);
         Assertions.assertEquals(LoginMessage.LOCKED_USER_MESSAGE, loginPage.getErrorMessageLockedOutUserName());
     }
+
+    @DisplayName("Should login page title is displayed")
+    @Test
+    public void shouldLoginPageTitleIsDisplayed(){
+        Assertions.assertTrue(loginPage.isLoginPageTitleDisplayed());
+    }
 }
